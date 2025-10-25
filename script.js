@@ -396,8 +396,8 @@ const toggleSound = () => {
   let on = true;
   return () => {
     if (on) {
-      el.blup.volume = 0.0;
-      el.blop.volume = 0.0;
+      el.blup.volume = 1.0;
+      el.blop.volume = 1.0;
       // el.loop1.volume=0.0
       el.sound.classList.add("sound--off");
     } else {
@@ -416,10 +416,17 @@ window.addEventListener("click", () => {
 window.addEventListener("load", () => {
   el.loop1.play().catch(err => console.log("Autoplay blocked until click:", err));
 });
- const audio = document.getElementById('loop1');
-    const startBtn = document.getElementById('start');
+//  window.addEventListener('load', () => {
+//     const audio = document.getElementById('loop1');
+//     const playPromise = audio.play();
 
-    startBtn.addEventListener('click', () => {
-      audio.play();
-      startBtn.style.display = 'none';
-    });
+//     if (playPromise !== undefined) {
+//       playPromise
+//         .then(() => console.log("Music playing..."))
+//         .catch(() => {
+//           // autoplay block ho gaya, to click event se play kara lo
+//           document.body.addEventListener('click', () => audio.play(), { once: true });
+//           console.log("Autoplay blocked, waiting for user interaction...");
+//         });
+//     }
+//   });
